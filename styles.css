@@ -230,7 +230,10 @@ body {
 @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap');
 
 /* Dann verwenden: */
-font-family: 'Noto Nastaliq Urdu', serif;
+/* Noto Nastaliq Urdu Font */
+.noto-nastaliq {
+    font-family: 'Noto Nastaliq Urdu', serif;
+}
 
 @font-face {
     font-family: 'IranNastaliq';
