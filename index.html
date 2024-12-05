@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interaktives Canvas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <canvas id="interaktiveCanvas"></canvas>
+
+    <div class="center-line"></div>
+
+    <div class="bottom-controls">
+        <div class="toolbar">
+            <button id="panTool" class="tool-button active" title="Pan-Werkzeug">
+                <i class="fas fa-hand-paper"></i>
+            </button>
+            <button id="textTool" class="tool-button" title="Text-Werkzeug">
+                <i class="fas fa-font"></i>
+            </button>
+            <button id="toggleGridButton" class="tool-button active" title="Raster ein/ausblenden">
+                <i class="fas fa-eye"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Text-Eingabe Modal -->
+    <div id="textModal" class="modal">
+        <div class="modal-content">
+            <input type="text" id="textInput" placeholder="Text eingeben...">
+            <div class="button-container">
+                <button id="confirmText">Bestätigen</button>
+                <button id="cancelText">Abbrechen</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="InteraktivesCanvas.js"></script>
+</body>
+</html> 
