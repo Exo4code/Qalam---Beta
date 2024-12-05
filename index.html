@@ -6,6 +6,9 @@
     <title>Interaktives Canvas</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preload" href="assets/fonts/IRANSansWeb.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/IRANSansWeb.woff" as="font" type="font/woff" crossorigin>
+    <link rel="preload" href="assets/IranNastaliq.ttf" as="font" type="font/truetype" crossorigin>
 </head>
 <body>
     <canvas id="interaktiveCanvas"></canvas>
@@ -29,7 +32,14 @@
     <!-- Text-Eingabe Modal -->
     <div id="textModal" class="modal">
         <div class="modal-content">
-            <input type="text" id="textInput" placeholder="Text eingeben...">
+            <div class="input-group">
+                <input type="text" id="textInput" placeholder="متن خود را وارد کنید...">
+                <select id="fontSelect" class="font-select">
+                    <option value="IranSans">فونت ساده</option>
+                    <option value="IranNastaliq">نستعلیق</option>
+                    <option value="NotoNastaliqUrdu">نستعلیق نوتو</option>
+                </select>
+            </div>
             <div class="button-container">
                 <button id="confirmText">Bestätigen</button>
                 <button id="cancelText">Abbrechen</button>

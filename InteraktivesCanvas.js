@@ -456,7 +456,7 @@ class InteraktivesCanvas {
         } else {
             this.canvas.style.cursor = 'text';                                            // Setzt Text-Cursor für Text-Modus
             // Entferne die Cursor-Events wenn nicht im Pan-Modus
-            this.canvas.removeEventListener('mousedown', () => this.canvas.style.cursor = 'grabbing'); // Entfernt Mausdr��ck-Event
+            this.canvas.removeEventListener('mousedown', () => this.canvas.style.cursor = 'grabbing'); // Entfernt Mausdrck-Event
             this.canvas.removeEventListener('mouseup', () => this.canvas.style.cursor = 'grab');       // Entfernt Mausloslassen-Event
             this.canvas.removeEventListener('mouseleave', () => this.canvas.style.cursor = 'grab');    // Entfernt Mausverlassen-Event
         }
@@ -468,6 +468,8 @@ class InteraktivesCanvas {
         const confirmBtn = document.getElementById('confirmText');
         const cancelBtn = document.getElementById('cancelText');
         
+        const fontSelect = document.getElementById('fontSelect');
+        
         // Text-Tool Click Handler
         document.getElementById('textTool').addEventListener('click', () => {
             textModal.style.display = 'flex';
@@ -478,14 +480,14 @@ class InteraktivesCanvas {
         confirmBtn.addEventListener('click', () => {
             const text = textInput.value.trim();
             if (text) {
-                // Berechne die Mitte des sichtbaren Bereichs
                 const centerX = (window.innerWidth / 2 - this.offset.x) / this.scale;
                 const centerY = (window.innerHeight / 2 - this.offset.y) / this.scale;
                 
                 this.textElements.push({
                     text: text,
                     x: centerX,
-                    y: centerY
+                    y: centerY,
+                    fontFamily: fontSelect.value // Speichere die ausgewählte Schriftart
                 });
                 this.draw();
             }
@@ -559,7 +561,7 @@ class InteraktivesCanvas {
         const viewportRight = (this.canvas.width - this.offset.x) / this.scale;
         const viewportBottom = (this.canvas.height - this.offset.y) / this.scale;
 
-        // Füge Puffer hinzu für flüssiges Scrollen
+        // Füge Puffer hinzu fr flüssiges Scrollen
         const buffer = this.gridSize * 2;
         const startX = Math.floor((viewportLeft - buffer) / this.gridSize) * this.gridSize;
         const startY = Math.floor((viewportTop - buffer) / this.gridSize) * this.gridSize;
@@ -590,7 +592,9 @@ class InteraktivesCanvas {
         context.scale(scale, scale);
         context.translate(-centerX, -centerY);
         
-        context.font = `${fontSize / this.scale}px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
+        // Verwende die gespeicherte Schriftart oder Standard
+        const fontFamily = element.fontFamily || 'IranSans';
+        context.font = `${fontSize / this.scale}px '${fontFamily}', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`;
         
         // Verbesserte Hervorhebung für ausgewählten Text
         if (element === this.selectedText) {
